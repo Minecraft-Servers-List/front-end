@@ -1,0 +1,14 @@
+.Banner {
+    font-family    : 'Montserrat', sans-serif;
+    text-align     : center;
+    color          : #fff;
+    padding        : 2rem 1rem;
+    margin-bottom  : 16px;
+    text-shadow    : 1px 1px 2px #333;
+    box-shadow     : 0px 2px 11px #333;
+    background-size: cover;
+}
+
+.Banner>h1 {
+    text-transform: uppercase;
+}

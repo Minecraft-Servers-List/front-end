@@ -35,22 +35,28 @@ class Paginator extends React.Component {
         return forward < this.props.maximum ? forward : this.props.maximum;
     }
 
+    handlePageChange = (e) => {
+        e.preventDefault();
+        let newPage = e.target.href.substring(42);
+        this.props.onPageChange(newPage);
+    }
+
     render() {
-        return <ul class="Paginator pagination">
-            <li class={"page-item" + (!this.canGoPrevious() && " disabled")}>
-                <a class="page-link" href={"https://www.minecraftserverslist.net/list/" + this.getManyPrevious()}>««</a>
+        return <ul className="Paginator pagination">
+            <li className={"page-item" + (!this.canGoPrevious() && " disabled")}>
+                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getManyPrevious()}>««</a>
             </li>
-            <li class={"page-item" + (!this.canGoPrevious() && " disabled")}>
-                <a class="page-link" href={"https://www.minecraftserverslist.net/list/" + this.getPrevious()}>«</a>
+            <li className={"page-item" + (!this.canGoPrevious() && " disabled")}>
+                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getPrevious()}>«</a>
             </li>
-            <li class="page-item active">
-                <span class="page-link">{this.getCurrent()}</span>
+            <li className="page-item active">
+                <span className="page-link">{this.getCurrent()}</span>
             </li>
-            <li class={"page-item" + (!this.canGoForward() && " disabled")}>
-                <a class="page-link" href={"https://www.minecraftserverslist.net/list/" + this.getForward()}>»</a>
+            <li className={"page-item" + (!this.canGoForward() && " disabled")}>
+                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getForward()}>»</a>
             </li>
-            <li class={"page-item" + (!this.canGoForward() && " disabled")}>
-                <a class="page-link" href={"https://www.minecraftserverslist.net/list/" + this.getManyForward()}>»»</a>
+            <li className={"page-item" + (!this.canGoForward() && " disabled")}>
+                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getManyForward()}>»»</a>
             </li>
         </ul>
     }

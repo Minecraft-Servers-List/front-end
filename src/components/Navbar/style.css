@@ -1,0 +1,14 @@
+.Navbar {
+    background-color: #151515 !important;
+    box-shadow: 3px 2px 11px #333;
+}
+
+.navbar-brand {
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+nav > div {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}

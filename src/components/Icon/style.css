@@ -1,0 +1,23 @@
+.Icon {
+    -webkit-filter: drop-shadow(1px 1px 5px #00000061);
+    filter        : drop-shadow(1px 1px 4px #00000061);
+}
+
+.Icon__loading {
+    opacity: 0.5;
+    animation: Icon-loading 1s infinite;
+}
+
+@-webkit-keyframes Icon-loading {
+    0% { opacity: 0.5; }
+    33% { opacity: 0.3; }
+    66% { opacity: 0.7; }
+    100% { opacity: 0.5; }
+}
+
+@keyframes Icon-loading {
+    0% { opacity: 0.5; }
+    33% { opacity: 0.3; }
+    66% { opacity: 0.7; }
+    100% { opacity: 0.5; }
+}

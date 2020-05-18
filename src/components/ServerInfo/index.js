@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Box from '../Box';
+import Icon from '../Icon';
 import Button from '../Button';
 import PlayerCounter from '../PlayerCounter';
 
@@ -17,7 +18,7 @@ class ServerInfo extends React.Component {
         return <Box>
             <div className="d-flex align-items-center p-1">
                 <a href={this.state.link}>
-                    <img className="ServerInfo__server-list-icon mr-3 noselect" src={this.state.icon} alt="" width="64" height="64" />
+                    <Icon src={this.state.icon} />
                 </a>
                 <div className="lh-100 mr-auto">
                     <h6 id="server-10566" className="mb-0 text-title lh-100">{this.props.address}</h6>

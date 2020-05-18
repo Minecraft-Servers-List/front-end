@@ -7,6 +7,7 @@ import Badge from '../../components/Badge';
 class ServerListPage extends React.Component {
     state = {
         page: this.props.page,
+        maxPages: 10,
         servers: []
     };
 
@@ -20,7 +21,8 @@ class ServerListPage extends React.Component {
 
         this.setState({
             page: page,
-            servers: servers
+            maxPages: servers.info.totalPages,
+            servers: servers.results
         });
     }
 
@@ -32,7 +34,7 @@ class ServerListPage extends React.Component {
         return <div>
             <div className="d-flex toolbar">
                 <nav aria-label="..." className="ml-auto mb-0">
-                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum="10" />
+                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum={this.state.maxPages} />
                 </nav>
             </div>
 
@@ -42,7 +44,7 @@ class ServerListPage extends React.Component {
 
             <div className="d-flex toolbar">
                 <nav aria-label="..." className="ml-auto mb-0">
-                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum="10" />
+                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum={this.state.maxPages} />
                 </nav>
             </div>
         </div>;
@@ -56,7 +58,7 @@ class ServerListPage extends React.Component {
 
     renderServer(server) {
         return <div key={server.id} className="server-list-entry">
-            <ServerInfo address={server.domain} icon="" currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
+            <ServerInfo address={server.domain} icon={"https://minecraftserverslist.net:8443/servers/"+server.image+"/image.jpg"} currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
                 {
                     server.tags.map(tag => {
                         return (<Badge key={server.id + "-" + tag}>{tag}</Badge>);

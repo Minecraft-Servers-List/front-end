@@ -66,7 +66,7 @@ class ServerListPage extends React.Component {
 
     renderServer(server) {
         return <div key={server.id} className="server-list-entry">
-            <ServerInfo address={server.domain} icon={"https://minecraftserverslist.net:8443/icons/"+server.image+".jpg"} currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
+            <ServerInfo address={server.domain} icon={"https://api.minecraftserverslist.net/v1/icons/"+server.image+".jpg"} currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
                 {
                     server.tags.map(tag => {
                         return (<Badge key={server.id + "-" + tag}>{tag}</Badge>);

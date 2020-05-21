@@ -18,7 +18,7 @@ class ServerList extends React.Component {
                 If you want to add a server manually you can do it in <a className="nounderline" href="#addserver">this link</a>
             </Banner>
             <main className="container">
-                <ServerListPage jsonUrl="https://minecraftserverslist.net:8443/list/" page="1" />
+                <ServerListPage jsonUrl="https://api.minecraftserverslist.net/v1/list/" page="1" />
             </main>
             <Footer />
         </div>

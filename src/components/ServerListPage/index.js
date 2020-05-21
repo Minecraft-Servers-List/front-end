@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 import Paginator from '../Paginator';
 import ServerInfo from '../ServerInfo';
@@ -26,8 +27,15 @@ class ServerListPage extends React.Component {
         });
     }
 
-    handlePageChange = (pageNum) => {
-        this.fetchServers(pageNum);
+    handlePageChange = async (pageNum) => {
+        await this.fetchServers(pageNum);
+        this.scrollTop();
+    }
+
+    scrollTop() {
+        if(window.pageYOffset <= 280) return; // Don't scroll when current position was at top
+        var element = ReactDOM.findDOMNode(this);
+        element.scrollIntoView({ behavior: 'smooth', block: 'start'});
     }
 
     render() {

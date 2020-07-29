@@ -9,6 +9,16 @@ import Footer from '../../components/Footer';
 import ServerListPage from '../../components/ServerListPage';
 
 class ServerList extends React.Component {
+    state = {
+        page: 1
+    }
+
+    componentWillMount() {
+        if (this.props.match.params.page) {
+            this.state.page = this.props.match.params.page;
+        }
+    }
+
     render() {
         return <div>
             <Navbar />
@@ -18,7 +28,7 @@ class ServerList extends React.Component {
                 If you want to add a server manually you can do it in <a className="nounderline" href="#addserver">this link</a>
             </Banner>
             <main className="container">
-                <ServerListPage jsonUrl="https://api.minecraftserverslist.net/v1/list/" page="1" />
+                <ServerListPage jsonUrl="https://api.minecraftserverslist.net/v1/list/" page={this.state.page} />
             </main>
             <Footer />
         </div>

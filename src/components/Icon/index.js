@@ -5,24 +5,32 @@ import "./style.css";
 import serverIcon from './default-server-icon.png';
 
 class Icon extends React.Component {
+    state = {
+        icon: serverIcon
+    }
 
     componentDidMount() {
         const node = ReactDOM.findDOMNode(this);
-        node.addEventListener("load", this.renderImage(node, this.props.src));
+        node.addEventListener("load", this.renderImage(node));
+    }
+
+    componentDidUpdate() {
+        const node = ReactDOM.findDOMNode(this);
+        node.addEventListener("load", this.renderImage(node));
     }
 
     render() {
-        return <img className="Icon Icon__loading mr-3 noselect" src={serverIcon} alt="" width="64" height="64" />
+        return <img className="Icon Icon__loading mr-3 noselect" src={this.state.icon} alt="" width="64" height="64" />
     }
 
-    renderImage(element, src) {
+    renderImage(element) {
         var img = new Image();
         img.addEventListener("load", () => {
-            element.src = this.props.src;
+            this.state.icon = img.src;
+            element.src = img.src;
             element.classList.remove("Icon__loading");
         });
-        let pop = src;
-        img.src = ""+pop;
+        img.src = this.props.src;
     }
 }
 

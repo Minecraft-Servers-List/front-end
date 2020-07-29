@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Box from '../Box';
 import Icon from '../Icon';
@@ -9,17 +10,13 @@ import "./style.css";
 import serverIcon from './default-server-icon.png';
 
 class ServerInfo extends React.Component {
-    state = {
-        link: "#" + this.props.address,
-        icon: this.isEmpty(this.props.icon) ? serverIcon : this.props.icon
-    }
 
     render() {
         return <Box>
             <div className="d-flex align-items-center p-1">
-                <a href={this.state.link}>
-                    <Icon src={this.state.icon} />
-                </a>
+                <Link to={"/server/" + this.props.id}>
+                    <Icon src={this.isEmpty(this.props.icon) ? serverIcon : this.props.icon} />
+                </Link>
                 <div className="lh-100 mr-auto">
                     <h6 id="server-10566" className="mb-0 text-title lh-100">{this.props.address}</h6>
                     <small className="ServerInfo__tags">
@@ -30,7 +27,7 @@ class ServerInfo extends React.Component {
                     <PlayerCounter currentPlayers={this.props.currentPlayers} maxPlayers={this.props.maxPlayers} />
                 </div>
                 <div className="lh-100 ml-1 p-2">
-                    <Button href={this.state.link}>More info</Button>
+                    <Button href={"/server/" + this.props.id}>More info</Button>
                 </div>
             </div>
         </Box>

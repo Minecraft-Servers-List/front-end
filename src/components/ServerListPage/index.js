@@ -33,9 +33,9 @@ class ServerListPage extends React.Component {
     }
 
     scrollTop() {
-        if(window.pageYOffset <= 280) return; // Don't scroll when current position was at top
+        if (window.pageYOffset <= 280) return; // Don't scroll when current position was at top
         var element = ReactDOM.findDOMNode(this);
-        element.scrollIntoView({ behavior: 'smooth', block: 'start'});
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     render() {
@@ -66,7 +66,7 @@ class ServerListPage extends React.Component {
 
     renderServer(server) {
         return <div key={server.id} className="server-list-entry">
-            <ServerInfo address={server.domain} icon={"https://api.minecraftserverslist.net/v1/icons/"+server.image+".jpg"} currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
+            <ServerInfo id={server.id} address={server.domain} icon={"https://api.minecraftserverslist.net/v1/icons/" + server.image + ".jpg"} currentPlayers={server.onlinePlayers} maxPlayers={server.maxPlayers}>
                 {
                     server.tags.map(tag => {
                         return (<Badge key={server.id + "-" + tag}>{tag}</Badge>);

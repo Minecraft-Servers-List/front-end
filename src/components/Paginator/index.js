@@ -1,6 +1,7 @@
 import React from 'react';
 
 import "./style.css";
+import { Link } from 'react-router-dom';
 
 class Paginator extends React.Component {
     getCurrent() {
@@ -35,28 +36,22 @@ class Paginator extends React.Component {
         return forward < this.props.maximum ? forward : this.props.maximum;
     }
 
-    handlePageChange = (e) => {
-        e.preventDefault();
-        let newPage = e.target.href.substring(42);
-        this.props.onPageChange(newPage);
-    }
-
     render() {
         return <ul className="Paginator pagination">
             <li className={"page-item" + (!this.canGoPrevious() && " disabled")}>
-                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getManyPrevious()}>««</a>
+                <Link to={`/list/${this.getManyPrevious()}`} className="page-link">««</Link>
             </li>
             <li className={"page-item" + (!this.canGoPrevious() && " disabled")}>
-                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getPrevious()}>«</a>
+                <Link to={`/list/${this.getPrevious()}`} className="page-link">«</Link>
             </li>
             <li className="page-item active">
                 <span className="page-link">{this.getCurrent()}</span>
             </li>
             <li className={"page-item" + (!this.canGoForward() && " disabled")}>
-                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getForward()}>»</a>
+                <Link to={`/list/${this.getForward()}`} className="page-link" >»</Link>
             </li>
             <li className={"page-item" + (!this.canGoForward() && " disabled")}>
-                <a className="page-link" onClick={this.handlePageChange} href={"https://www.minecraftserverslist.net/list/" + this.getManyForward()}>»»</a>
+                <Link to={`/list/${this.getManyForward()}`} className="page-link">»»</Link>
             </li>
         </ul>
     }

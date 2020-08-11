@@ -8,11 +8,11 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/server/:id" component={ServerDetails} />
-        <Route path="/server" component={ServerDetails} />
-        <Route path="/list/:page" component={ServerList} />
-        <Route path="/list" component={ServerList} />
-        <Route path="/" component={ServerList} />
+        <Route exact path="/server/:id" component={ServerDetails} />
+        <Route exact path="/server" component={ServerDetails} />
+        <Route exact path="/list/:page" component={ServerList} />
+        <Route exact path="/list" component={ServerList} />
+        <Route exact path="/" component={ServerList} />
       </Switch>
     </BrowserRouter>
   );

@@ -7,13 +7,30 @@ import Badge from '../../components/Badge';
 
 class ServerListPage extends React.Component {
     state = {
-        page: this.props.page,
+        page: 1,
         maxPages: 10,
         servers: []
     };
 
+    constructor(props) {
+        super(props);
+
+        if(props.page) this.state.page = props.page;
+    }
+
     componentDidMount() {
         this.fetchServers(this.state.page);
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.page === this.props.page) return;
+
+        this.setState({
+            ...this.state,
+            page: this.props.page
+        });
+        this.fetchServers(this.props.page);
+        this.scrollTop();
     }
 
     fetchServers = async (page) => {
@@ -27,11 +44,6 @@ class ServerListPage extends React.Component {
         });
     }
 
-    handlePageChange = async (pageNum) => {
-        await this.fetchServers(pageNum);
-        this.scrollTop();
-    }
-
     scrollTop() {
         if (window.pageYOffset <= 280) return; // Don't scroll when current position was at top
         var element = ReactDOM.findDOMNode(this);
@@ -42,7 +54,7 @@ class ServerListPage extends React.Component {
         return <div>
             <div className="d-flex toolbar">
                 <nav aria-label="..." className="ml-auto mb-0">
-                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum={this.state.maxPages} />
+                    <Paginator minimum="1" current={this.state.page} maximum={this.state.maxPages} />
                 </nav>
             </div>
 
@@ -52,7 +64,7 @@ class ServerListPage extends React.Component {
 
             <div className="d-flex toolbar">
                 <nav aria-label="..." className="ml-auto mb-0">
-                    <Paginator onPageChange={this.handlePageChange} minimum="1" current={this.state.page} maximum={this.state.maxPages} />
+                    <Paginator minimum="1" current={this.state.page} maximum={this.state.maxPages} />
                 </nav>
             </div>
         </div>;

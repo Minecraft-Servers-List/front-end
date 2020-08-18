@@ -5,15 +5,16 @@ import siteLogo from './site-logo.png';
 
 import { faPlusSquare, faSearch, faServer } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from 'react-router-dom';
 
 class Navbar extends React.Component {
     render() {
         return <nav className="Navbar navbar navbar-expand navbar-dark bg-kuro">
             <div className="container">
-                <a className="navbar-brand" href="#">
+                <Link to="/" className="navbar-brand">
                     <img src={siteLogo} width="30" height="30" className="site-logo d-inline-block align-top" alt="" />
                     Minecraft Server List
-                </a>
+                </Link>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample02" aria-controls="navbarsExample02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -34,9 +35,9 @@ class Navbar extends React.Component {
                         </li>
 
                         <li className="nav-item">
-                            <a className="nav-link" href="#">
+                            <Link to="/list" className="nav-link">
                                 <FontAwesomeIcon icon={faServer} /> Server List
-                            </a>
+                            </Link>
                         </li>
 
                     </ul>

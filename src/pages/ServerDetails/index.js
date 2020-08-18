@@ -6,9 +6,7 @@ import banner from "./default-server-banner.png";
 import Navbar from '../../components/Navbar';
 import Banner from '../../components/Banner';
 import Footer from '../../components/Footer';
-import ServerListPage from '../../components/ServerListPage';
-import ServerInfo from '../../components/ServerInfo';
-import Badge from '../../components/Badge';
+import ServerDetails from '../../components/ServerDetails';
 
 class ServerList extends React.Component {
     state = {
@@ -44,13 +42,14 @@ class ServerList extends React.Component {
                 If you are the owner of this server you can claim it in <a className="nounderline" href="#addserver">this link</a>
             </Banner>
             <main className="container">
-                <ServerInfo id={this.state.id} address={this.state.domain} icon={"https://api.minecraftserverslist.net/v1/icons/" + this.state.image + ".jpg"} currentPlayers={this.state.onlinePlayers} maxPlayers={this.state.maxPlayers}>
-                    {
-                        this.state.tags.map(tag => {
-                            return (<Badge key={this.state.id + "-" + tag}>{tag}</Badge>);
-                        })
-                    }
-                </ServerInfo>
+                <ServerDetails
+                    id={this.state.id}
+                    address={this.state.domain}
+                    icon={"https://api.minecraftserverslist.net/v1/icons/" + this.state.image + ".jpg"}
+                    currentPlayers={this.state.onlinePlayers}
+                    maxPlayers={this.state.maxPlayers}
+                    score={this.state.score}
+                />
             </main>
             <Footer />
         </div>
